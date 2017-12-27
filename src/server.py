@@ -70,7 +70,8 @@ class MovieId (Resource):
             return jsonify(result)
         
 
-        db_connect = create_engine('mysql://accessusr:Student@192.168.0.55/CineStarMain')
+
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -83,13 +84,18 @@ class Users (Resource):
         return(output)
 
             
-    
+class Login (Resource):
+    def get (self):
+        json_data = request.get_json(force=True)
+        return jsonify ({"message":"Complete this plz"})
+
 
 #AAAAAAAH I COMMENTED THIS OUT.     
 api.add_resource(Movies, '/Movies')
 api.add_resource(MovieId, '/Movies/<movie_ID>')
 api.add_resource(MovieSearchTest, '/test', endpoint='test')
 api.add_resource(Users, '/users')
+api.add_resource(Login, '/users/login')
     
 if __name__ == '__main__':
-    app.run(port='5002')
+    app.run(port='5002', host='0.0.0.0')

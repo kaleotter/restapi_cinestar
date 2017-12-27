@@ -27,11 +27,11 @@ def createNewUser(jsondata):
         
     #first check if account with user unique
     if (session.query(exists().where(db.Users.email == email)).scalar()):
-        return jsonify('{"Message":"An account with this email already exists!"}')
+        return jsonify({"Message":"An account with this email already exists!"})
         
     #then check to see if username is unique
     if (session.query(exists().where(db.Users.username == user)).scalar()):
-        return jsonify('{"Message":"An account with this username already exists!"}')
+        return jsonify({"Message":"An account with this username azlready exists!"})
         
     #we can then prepare to create the account
         
@@ -42,4 +42,9 @@ def createNewUser(jsondata):
     session.add(new_user)
     session.commit()
         
-    return jsonify('{"Message":"Account created successfully!"}')
+    return jsonify({"Message":"Account created successfully! You Can now Log in"})
+
+
+def doLogin():
+    return jsonify({"Message":"I keel you"})
+    
