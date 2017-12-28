@@ -85,8 +85,9 @@ class Users (Resource):
 
             
 class Login (Resource):
-    def get (self):
-        json_data = request.get_json(force=True)
+    def get (self,username):
+        
+        userView.doLogin(username)
         return jsonify ({"message":"Complete this plz"})
 
 
@@ -95,7 +96,7 @@ api.add_resource(Movies, '/Movies')
 api.add_resource(MovieId, '/Movies/<movie_ID>')
 api.add_resource(MovieSearchTest, '/test', endpoint='test')
 api.add_resource(Users, '/users')
-api.add_resource(Login, '/users/login')
+api.add_resource(Login, '/users/login/<username>')
     
 if __name__ == '__main__':
     app.run(port='5002', host='0.0.0.0')

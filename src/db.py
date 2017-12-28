@@ -16,8 +16,11 @@ class Users(Base):
     
     
     def __repr__(self):
-        return "<Users(username='%s', email='%s', password='%s')>" % (
-                        self.username, self.email, self.password)
+        return "<Users( userID = '%s',username='%s', email='%s', password='%s')>" % (
+                        self.userID,
+                        self.username, 
+                        self.email, 
+                        self.password)
     
 
 

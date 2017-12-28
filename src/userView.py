@@ -3,6 +3,7 @@
 # and open the template in the editor.
 
 #Imports
+from flask import Flask
 from sqlalchemy import create_engine, exists
 from sqlalchemy.orm import sessionmaker
 from json import dumps
@@ -45,6 +46,22 @@ def createNewUser(jsondata):
     return jsonify({"Message":"Account created successfully! You Can now Log in"})
 
 
-def doLogin():
+def doLogin(userName):
+    session = Session()
+    
+    
+    
+    
+    #First Work out if the user exists
+    if (session.query(exists().where(db.Users.username== userName)).scalar()):
+        
+        #We know the user Exists, so now we can check thier password
+        for userID in session.query.filter(db.Users.username == userName): #wrong. fix in morning
+            print (userID)
+    else:
+        
+        print ('failed to find user')
+    
+    
     return jsonify({"Message":"I keel you"})
     
